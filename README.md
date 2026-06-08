@@ -1,73 +1,97 @@
-# HR Attrition Analysis (SQL Project)
+<div align="center">
 
-## Project Overview
+# HR Attrition Analysis — SQL Project
 
-This project analyzes employee data to understand the key factors influencing employee attrition in an organization. The analysis was performed using SQL in Microsoft SQL Server to identify patterns, trends, and insights related to employee turnover.
+![SQL Server](https://img.shields.io/badge/SQL-Microsoft%20SQL%20Server-blue?style=flat-square&logo=microsoftsqlserver)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=flat-square)
+![Domain](https://img.shields.io/badge/Domain-HR%20Analytics-orange?style=flat-square)
 
-The goal of this project is to help organizations understand why employees leave and provide data-driven insights that can support better HR decision-making.
+</div>
 
+---
 
-## Dataset Description
+## Overview
 
-The dataset contains employee information such as:
+Analysis of employee attrition patterns using SQL on Microsoft SQL Server. The project identifies key drivers of employee turnover — overtime, salary gaps, tenure, and work-life balance — and surfaces high-risk employee segments to support data-driven HR decisions.
 
-* Age
-* Department
-* Job Role
-* Monthly Income
-* Work Life Balance
-* Overtime
-* Years at Company
-* Job Satisfaction
-* Distance from Home
-* Attrition Status
+---
 
-These variables help analyze employee behavior and identify factors contributing to attrition.
+## Business Problem
 
+> *"Employee turnover costs companies 6-9 months of an employee's salary in recruitment and training costs. Identifying at-risk employees before they leave is far cheaper than replacing them."*
 
+---
 
-## Tools Used
+## Dataset
 
-* SQL (Microsoft SQL Server)
-* Data Analysis
-* Aggregation and Window Functions
-* Conditional Logic using CASE WHEN
-* Data Cleaning and Validation
+| Property | Detail |
+|---|---|
+| Source | [IBM HR Analytics Dataset — Kaggle](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset) |
+| Records | 1,470 employees |
+| Target | `Attrition` (Yes / No) |
 
+**Key columns:** `Department`, `JobRole`, `MonthlyIncome`, `OverTime`, `WorkLifeBalance`, `YearsAtCompany`, `DistanceFromHome`, `JobSatisfaction`
 
+---
 
-## Key Analysis Performed
+## SQL Techniques Used
 
-The following analyses were conducted using SQL queries:
+`GROUP BY` `CASE WHEN` `Aggregate Functions` `Subqueries` `Window Functions` `INFORMATION_SCHEMA` `Duplicate Detection` `Conditional Aggregation`
 
-1. Department-wise attrition analysis
-2. Attrition based on work-life balance
-3. Overtime vs attrition comparison
-4. Attrition by years at company
-5. Salary comparison across departments
-6. Duplicate record detection 
-7. Attrition trends across job roles
+---
 
+## Key Findings
 
+| # | Finding | Insight |
+|---|---|---|
+| 1 | R&D has highest attrition count (133) | Counter-intuitive — not Sales as assumed |
+| 2 | Overtime employees show 41% higher attrition | Burnout is a top driver |
+| 3 | 1-year tenure employees leave most (59 cases) | Onboarding gap identified |
+| 4 | HR dept has lowest avg salary + high attrition | Compensation-retention link confirmed |
+| 5 | WLB score 3 has highest attrition (127) | Mid-range balance still insufficient |
+| 6 | Lab Technicians, Sales Execs, Research Scientists are top 3 high-turnover roles | Role-specific interventions needed |
 
-## Key Insights
+---
 
-* The Sales department shows a higher attrition count compared to other departments.
-* Employees working overtime show significantly higher attrition.
-* Employees with only one year at the company have the highest attrition count.
-* WorkLifeBalance score of 3 has the highest attrition count.
-* The HR department shows higher attrition potentially due to lower average salary.
+## Analysis Sections
 
+```
+hr.sql
+├── Section 1 — Data Exploration
+├── Section 2 — Data Quality (duplicate detection)
+├── Section 3 — Attrition Analysis (6 business scenarios)
+├── Section 4 — Salary Analysis
+└── Section 5 — High-Risk Employee Identification
+```
+
+---
 
 ## Business Recommendations
 
-Based on the analysis, the following actions may help reduce attrition:
+- Introduce structured 90-day onboarding programs to reduce early attrition
+- Cap or compensate overtime hours — especially in R&D and Sales
+- Conduct salary benchmarking for HR and Lab Technician roles
+- Flag employees with: overtime + WLB ≤ 2 + job satisfaction ≤ 2 for proactive retention
 
-* Improve employee onboarding and early engagement programs.
-* Monitor overtime workload to prevent employee burnout.
-* Review salary structures in departments with higher attrition.
-* Enhance work-life balance initiatives for employees.
-* Provide career growth opportunities and employee support programs.
+---
 
+## How to Run
 
+```sql
+-- 1. Import the dataset into SQL Server (CSV → Import Flat File)
+-- 2. Open hr.sql in SSMS
+-- 3. Update USE statement to your database name
+-- 4. Run section by section (Ctrl+E per block)
+```
 
+---
+
+## Author
+
+**Tushar** — Data Analyst | [GitHub](https://github.com/tusharcodez)
+
+---
+
+<div align="center">
+<sub>Boston Institute of Analytics — PG Diploma in Data Science & Generative AI</sub>
+</div>
